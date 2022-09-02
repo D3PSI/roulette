@@ -3,10 +3,10 @@ use std::process::exit;
 use rand::thread_rng;
 use rand::Rng;
 
-const SPINS: usize = 1000;
+const SPINS: usize = 10000;
 
 fn main() {
-    let mut balance = 100.0f32;
+    let mut balance = 10000.0f32;
     let mut bet = 4.0f32;
 
     let mut prev_win = true;
@@ -25,12 +25,12 @@ fn main() {
             prev_win = false;
         } else {
             prev_win = true;
-            balance += bet * 9.0 / 8.0;
+            balance += bet / 8.0;
             println!("win");
             bet = 4.0f32;
         }
         if balance <= 0.0f32 {
-            println!("no money");
+            println!("no money: {}", i);
             exit(0);
         }
         println!("{}", balance);
